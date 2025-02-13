@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Minha Plataforma</title>
+    <!-- Fonte Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="login-header">
+        <h1>Bem-vindo à Minha Plataforma</h1>
+    </header>
+
+    <!-- Mensagens flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Conteúdo principal -->
+    <div class="login-container">
+        <!-- Formulário de Login -->
+        <form action="{{ url_for('login') }}" method="post" class="login-form">
+            <h2>Acesse sua conta</h2>
+            <label for="email">E-mail:</label>
+            <input type="text" name="email" id="email" placeholder="Digite seu e-mail" required>
+            <label for="password">Senha:</label>
+            <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
+            <button type="submit">Entrar</button>
+            <p class="register-link">Não tem uma conta? <a href="{{ url_for('register') }}">Registre-se aqui</a>.</p>
+        </form>
+    </div>
+</body>
+</html>
