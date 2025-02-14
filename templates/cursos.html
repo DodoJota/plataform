@@ -1,6 +1,65 @@
-{% extends "index.html" %}
-
-{% block content %}
-<h1>Aulas</h1>
-<p>As aulas gravadas estarão aqui.</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos - Minha Plataforma</title>
+    <!-- Fonte Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="course-container">
+        <!-- Barra lateral esquerda com ícones -->
+        <div class="left-sidebar" id="leftSidebar">
+            <h2>Menu</h2>
+            <a href="{{ url_for('index') }}" title="Dashboard"><i class="fas fa-laptop"></i><span>Dashboard</span></a>
+            <a href="{{ url_for('jogos') }}" title="Jogos"><i class="fas fa-chess"></i><span>Jogos</span></a>
+            <a href="{{ url_for('lives') }}" title="Lives"><i class="fas fa-video"></i><span>Lives</span></a>
+            <a href="{{ url_for('cursos') }}" title="Cursos" class="active-icon"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
+        </div>
+        <!-- Área de conteúdo principal -->
+        <div class="content">
+            <div class="video-container">
+                <video id="videoPlayer" controls>
+                    <source src="{{ url_for('static', filename='videos/ptflag.mp4') }}" type="video/mp4">
+                    Seu navegador não suporta a reprodução de vídeos.
+                </video>
+            </div>
+            <div class="notes-container">
+                <h3>Anotações</h3>
+                <textarea id="notes-textarea" rows="10" placeholder="Escreva suas anotações aqui..."></textarea>
+                <button id="save-notes">Salvar Anotações</button>
+            </div>
+        </div>
+        <!-- Cabeçalho lateral direita -->
+        <div class="right-sidebar" id="rightSidebar">
+            <h2>Curso</h2>
+            <ul>
+                <li><strong>Curso 1</strong></li>
+                <ul>
+                    <li><a href="#" onclick="loadVideo('explicacao.mp4')">Aula 1</a></li>
+                    <li><a href="#" onclick="loadVideo('lesson.mp4')">Aula 2</a></li>
+                    <!-- Continue listando as aulas -->
+                </ul>
+                <li><strong>Curso 2</strong></li>
+                <ul>
+                    <li><a href="#" onclick="loadVideo('laptop.mp4')">Aula 1</a></li>
+                    <li><a href="#" onclick="loadVideo('videocall.mp4')">Aula 2</a></li>
+                    <!-- Continue listando as aulas -->
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function loadVideo(videoFile) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = "{{ url_for('static', filename='videos/') }}" + videoFile;
+            videoPlayer.play();
+        }
+    </script>
+    <script src="static/js/course-notes.js"></script>
+</body>
+</html>

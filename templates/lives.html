@@ -1,6 +1,20 @@
-{% extends "index.html" %}
-
-{% block content %}
-<h1>Lives</h1>
-<p>Lives com o seu mentor</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lives - Minha Plataforma</title>
+    <!-- Fonte Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="live-container">
+        <h1>Conecte-se com seu Mentor</h1>
+        <p>Escolha uma plataforma para ingressar na videochamada:</p>
+        <a href="https://zoom.us/j/your_meeting_id" target="_blank" class="btn">Entrar na Live via Zoom</a>
+        <a href="https://join.skype.com/your_meeting_id" target="_blank" class="btn">Entrar na Live via Skype</a>
+        <a href="https://teams.microsoft.com/l/meetup-join/your_meeting_id" target="_blank" class="btn">Entrar na Live via Teams</a>
+    </div>
+</body>
+</html>
