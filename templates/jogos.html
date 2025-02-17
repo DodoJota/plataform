@@ -1,6 +1,114 @@
-{% extends "index.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogos</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    .flashcard {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      border: 2px solid #ffc107;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .flashcard:hover {
+      transform: scale(1.05);
+    }
+    .flashcard-content {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
 
-{% block content %}
-<h1>Jogos</h1>
-<p>Jogos interativos como flashcards.</p>
-{% endblock %}
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Minha Plataforma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Itens da navbar podem ser adicionados aqui se necessário -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Estrutura principal com sidebar -->
+  <div class="course-container">
+    
+    <!-- Sidebar esquerda -->
+    <div class="left-sidebar">
+      <h2>Menu</h2>
+      <a href="{{ url_for('index') }}" title="Dashboard"><i class="fas fa-laptop"></i><span>Dashboard</span></a>
+      <a href="{{ url_for('cursos') }}" title="Cursos" class="active-icon"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
+      <a href="{{ url_for('lives') }}" title="Lives"><i class="fas fa-video"></i><span>Lives</span></a>
+      <a href="{{ url_for('materiais') }}" title="Materiais"><i class="fas fa-book"></i><span>Materiais</span></a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+      <div class="container mt-5">
+        <h1 class="text-center">Jogos de Flashcards</h1>
+        <p class="text-center">Pratique idiomas com nossos flashcards interativos:</p>
+        
+        <!-- Flashcard -->
+        <div class="flashcard" onclick="flipFlashcard()">
+          <div class="flashcard-content" id="flashcard-content">
+            Palavra em Inglês
+          </div>
+        </div>
+
+        <!-- Botão para próximo flashcard -->
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="nextFlashcard()">Próximo</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS e dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const flashcards = [
+      { front: "Hello", back: "Olá" },
+      { front: "Goodbye", back: "Adeus" },
+      { front: "Please", back: "Por favor" },
+      { front: "Thank you", back: "Obrigado" }
+    ];
+    let currentFlashcard = 0;
+    let isFlipped = false;
+
+    function flipFlashcard() {
+      const content = document.getElementById('flashcard-content');
+      if (isFlipped) {
+        content.textContent = flashcards[currentFlashcard].front;
+      } else {
+        content.textContent = flashcards[currentFlashcard].back;
+      }
+      isFlipped = !isFlipped;
+    }
+
+    function nextFlashcard() {
+      currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+      isFlipped = false;
+      document.getElementById('flashcard-content').textContent = flashcards[currentFlashcard].front;
+    }
+  </script>
+
+</body>
+</html>

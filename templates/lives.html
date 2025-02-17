@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Lives - Minha Plataforma</title>
-    <!-- Fonte Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <meta charset="UTF-8">
+  <title>Lives</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="live-container">
-        <h1>Conecte-se com seu Mentor</h1>
-        <p>Escolha uma plataforma para ingressar na videochamada:</p>
-        <a href="https://zoom.us/j/your_meeting_id" target="_blank" class="btn">Entrar na Live via Zoom</a>
-        <a href="https://join.skype.com/your_meeting_id" target="_blank" class="btn">Entrar na Live via Skype</a>
-        <a href="https://teams.microsoft.com/l/meetup-join/your_meeting_id" target="_blank" class="btn">Entrar na Live via Teams</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Minha Plataforma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Itens da navbar podem ser adicionados aqui se necessário -->
+      </div>
     </div>
+  </nav>
+
+  <!-- Estrutura principal com sidebar -->
+  <div class="course-container">
+    
+    <!-- Sidebar esquerda -->
+    <div class="left-sidebar">
+      <h2>Menu</h2>
+      <a href="{{ url_for('index') }}" title="Dashboard"><i class="fas fa-laptop"></i><span>Dashboard</span></a>
+      <a href="{{ url_for('jogos') }}" title="Games"><i class="fas fa-chess"></i><span>Jogos</span></a>
+      <a href="{{ url_for('cursos') }}" title="Cursos" class="active-icon"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
+      <a href="{{ url_for('materiais') }}" title="Materiais"><i class="fas fa-book"></i><span>Materiais</span></a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+      <div class="container mt-5">
+        <h1 class="text-center">Lives</h1>
+        <p class="text-center">Acesse as plataformas de videoconferência abaixo:</p>
+        <div class="row mt-4">
+          
+          <!-- Card para Zoom -->
+          <div class="col-md-3">
+            <div class="card card-blue">
+              <div class="card-body text-center">
+                <h5 class="card-title">Zoom</h5>
+                <p class="card-text">Participe de reuniões no Zoom.</p>
+                <a href="https://zoom.us" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Acessar Zoom</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card para Skype -->
+          <div class="col-md-3">
+            <div class="card card-yellow">
+              <div class="card-body text-center">
+                <h5 class="card-title">Skype</h5>
+                <p class="card-text">Converse com seus contatos no Skype.</p>
+                <a href="https://www.skype.com" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Acessar Skype</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card para Teams -->
+          <div class="col-md-3">
+            <div class="card card-green">
+              <div class="card-body text-center">
+                <h5 class="card-title">Microsoft Teams</h5>
+                <p class="card-text">Colabore com sua equipe no Teams.</p>
+                <a href="https://teams.microsoft.com" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Acessar Teams</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card para Google Meet -->
+          <div class="col-md-3">
+            <div class="card card-red">
+              <div class="card-body text-center">
+                <h5 class="card-title">Google Meet</h5>
+                <p class="card-text">Realize videoconferências no Meet.</p>
+                <a href="https://meet.google.com" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt"></i> Acessar Meet</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS e dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

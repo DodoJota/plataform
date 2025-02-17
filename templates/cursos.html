@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cursos - Minha Plataforma</title>
+    <title>Curse - Minha Plataforma</title>
     <!-- Fonte Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -16,9 +16,9 @@
         <div class="left-sidebar" id="leftSidebar">
             <h2>Menu</h2>
             <a href="{{ url_for('index') }}" title="Dashboard"><i class="fas fa-laptop"></i><span>Dashboard</span></a>
-            <a href="{{ url_for('jogos') }}" title="Jogos"><i class="fas fa-chess"></i><span>Jogos</span></a>
+            <a href="{{ url_for('jogos') }}" title="Games"><i class="fas fa-chess"></i><span>Jogos</span></a>
             <a href="{{ url_for('lives') }}" title="Lives"><i class="fas fa-video"></i><span>Lives</span></a>
-            <a href="{{ url_for('cursos') }}" title="Cursos" class="active-icon"><i class="fas fa-graduation-cap"></i><span>Cursos</span></a>
+            <a href="{{ url_for('materiais') }}" title="Materiais" class="active-icon"><i class="fas fa-book"></i><span>Materiais</span></a>
         </div>
         <!-- Área de conteúdo principal -->
         <div class="content">
@@ -29,25 +29,25 @@
                 </video>
             </div>
             <div class="notes-container">
-                <h3>Anotações</h3>
-                <textarea id="notes-textarea" rows="10" placeholder="Escreva suas anotações aqui..."></textarea>
-                <button id="save-notes">Salvar Anotações</button>
+                <h3>Notes</h3>
+                <textarea id="notes-textarea" rows="10" placeholder="Enter your notes here..."></textarea>
+                <button id="save-notes">Save</button>
             </div>
         </div>
         <!-- Cabeçalho lateral direita -->
         <div class="right-sidebar" id="rightSidebar">
-            <h2>Curso</h2>
+            <h2>Curse</h2>
             <ul>
-                <li><strong>Curso 1</strong></li>
+                <li><strong>Module 1</strong></li>
                 <ul>
-                    <li><a href="#" onclick="loadVideo('explicacao.mp4')">Aula 1</a></li>
-                    <li><a href="#" onclick="loadVideo('lesson.mp4')">Aula 2</a></li>
+                    <li><a href="#" onclick="loadVideo('explicacao.mp4')">1.1</a></li>
+                    <li><a href="#" onclick="loadVideo('lesson.mp4')">1.2</a></li>
                     <!-- Continue listando as aulas -->
                 </ul>
-                <li><strong>Curso 2</strong></li>
+                <li><strong>Module 2</strong></li>
                 <ul>
-                    <li><a href="#" onclick="loadVideo('laptop.mp4')">Aula 1</a></li>
-                    <li><a href="#" onclick="loadVideo('videocall.mp4')">Aula 2</a></li>
+                    <li><a href="#" onclick="loadVideo('laptop.mp4')">2.1</a></li>
+                    <li><a href="#" onclick="loadVideo('videocall.mp4')">2.2</a></li>
                     <!-- Continue listando as aulas -->
                 </ul>
             </ul>
